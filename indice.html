@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Página com Índice Automático</title>
+  <style>
+    body {
+      display: flex;
+      font-family: Arial, sans-serif;
+    }
+    nav {
+      width: 250px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      overflow-y: auto;
+      background: #f0f0f0;
+      padding: 20px;
+    }
+    nav a {
+      display: block;
+      margin-bottom: 10px;
+      text-decoration: none;
+      color: #333;
+    }
+    main {
+      margin-left: 270px;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<nav id="toc">
+  <h3>Índice</h3>
+</nav>
+
+<main>
+  <h1>Primeiro Título</h1>
+  <p>Conteúdo do primeiro título...</p>
+
+  <h2>Subtítulo A</h2>
+  <p>Conteúdo do subtítulo A...</p>
+
+  <h2>Subtítulo B</h2>
+  <p>Conteúdo do subtítulo B...</p>
+
+  <h1>Segundo Título</h1>
+  <p>Conteúdo do segundo título...</p>
+</main>
+
+<script>
+  const toc = document.getElementById('toc');
+  const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+  headings.forEach((heading, index) => {
+    const id = 'titulo' + index;
+    heading.id = id;
+
+    const link = document.createElement('a');
+    link.href = '#' + id;
+    link.textContent = heading.textContent;
+    toc.appendChild(link);
+  });
+</script>
+
+</body>
+</html>
